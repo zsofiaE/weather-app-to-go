@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
     <meta charset="UTF-8">
@@ -19,23 +20,27 @@
 
     </head>
     <body>
-        <div class="search-section">
+        <div class="search-section bg">
+            <!-- <div id="bg-result">  -->
 
-            <div class="weather-card">
-                <h1 class="city">City</h1>
-                <div class="forecast">
-                    <image class="icon" src="/assets/apple-touch-icon.png" height="40" width="40">
-                    <p class="weather">Sunny, cloudy</p>
-                    <p class="tempreture">12 degrees</p>
+                <div class="weather-card">
+                    <h1 class="city">City</h1>
+                    <div class="forecast">
+                        <image class="icon" src="/assets/apple-touch-icon.png" height="40" width="40">
+                        <p class="weather">Sunny, cloudy</p>
+                        <p class="tempreture">12 degrees</p>
+                    </div>
                 </div>
-            </div>
 
-            <form class="search-container">
-                <input type="search" id="search-input" placeholder="search for a city" 
-                autocomplete="off" inputmode="search">
-                <button class="search-btn button" type="submit" onclick="searchWeather()">search</button>
-            </form>
-            </div>
+                <div class="search-container">
+                    <input type="search" id="search-input" placeholder="search for a city" 
+                    autocomplete="off" inputmode="search">
+                    <button class="search-btn button" type="submit" onclick="searchPhotos()">search</button>
+                </div>
+
+                <div class="gallery"> </div>
+            <!-- </div> -->
+        </div>
         <script src="script2.js"></script>
     </body>
 </html>
