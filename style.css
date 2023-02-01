@@ -23,6 +23,10 @@
     background: linear-gradient(180deg, rgba(116, 50, 186, 0.6) 0%, rgba(25, 205, 157, 0.6) 100%);
     text-align: center;
 }
+.hide{
+    display: none;
+    opacity: 0;
+}
 
 .search-section{
     height: 100vh;

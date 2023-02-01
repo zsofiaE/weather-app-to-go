@@ -5,13 +5,16 @@ const clientId = "8FAQOMjMmHK-HJmM7eLkhcRwyWZVg_TZ5ybi20qw9Dw"; // Nr. 2
 // const clientId = "nhHInUCkFEGWWmSpsJt3pJLTYevYEE1oy4pvyWatKiM"; // Nr. 5
 
 let result;
+const city = document.querySelector(".city");
+
+
 
 
 function searchPhotos(){
     let searchInput = document.getElementById("search-input").value;
     const url = `https://api.unsplash.com/search/photos/?client_id=${clientId}&query=${searchInput}&per_page=5`;
     let searchSection = document.querySelector('search-section');
-    const gallery = document.querySelector(".search-section");
+    //const gallery = document.querySelector(".search-section");
 
     fetch(url)
     .then (function (data) {
@@ -34,6 +37,13 @@ function searchPhotos(){
     const bg = document.querySelector(".bg");
     const img = data.results[Math.floor(Math.random() * 5)].urls.regular;
     bg.style.backgroundImage = `url(${img})`;
+    const weatherCard = document.querySelector(".weather-card");
+
+    weatherCard.classList.remove('hide');
+    city.innerHTML = searchInput;
+    
+    
+    
 
    //data.results.forEach ( photo => {
 
@@ -58,6 +68,26 @@ function searchPhotos(){
 //    })
 })
 
+
+
+const apiKey = "37cf947bdeb74b2c9b5184815230102";
+const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchInput}`;
+const icon = document.querySelector(".icon");
+const weather = document.querySelector(".weather");
+const temp = document.querySelector(".tempreture");
+
+
+ fetch(weatherUrl)
+	.then(response => response.json())
+	.then(data => {
+        console.log(data)
+        icon.src = data.current.condition.icon;
+        weather.innerText = data.current.condition.text;
+        temp.innerText = data.current.temp_c + "°C";
+
+
+     } )
+	//.catch(err => console.error(err));
 
 }
 
