@@ -1,0 +1,41 @@
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stlye.css" >
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://kit.fontawesome.com/18795bf9d8.js" crossorigin="anonymous"></script>
+    
+        <!-- googlefonts link   -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+        
+        <!--favicon -->
+
+
+    <title>weather app to go</title>
+
+    </head>
+    <body>
+        <div class="search-section">
+
+            <div class="weather-card">
+                <h1 class="city">City</h1>
+                <div class="forecast">
+                    <image class="icon" src="/assets/apple-touch-icon.png" height="40" width="40">
+                    <p class="weather">Sunny, cloudy</p>
+                    <p class="tempreture">12 degrees</p>
+                </div>
+            </div>
+
+            <form class="search-container">
+                <input type="search" id="search-input" placeholder="search for a city" 
+                autocomplete="off" inputmode="search">
+                <button class="search-btn button" type="submit" onclick="searchWeather()">search</button>
+            </form>
+            </div>
+        <script src="script.js"></script>
+    </body>
+</html>
