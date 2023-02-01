@@ -37,8 +37,12 @@ function searchPhotos(){
     const bg = document.querySelector(".bg");
     const img = data.results[Math.floor(Math.random() * 5)].urls.regular;
     bg.style.backgroundImage = `url(${img})`;
+    const weatherCard = document.querySelector(".weather-card");
 
+    weatherCard.classList.remove('hide');
     city.innerHTML = searchInput;
+    
+    
     
 
    //data.results.forEach ( photo => {
