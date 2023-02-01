@@ -85,6 +85,22 @@ const temp = document.querySelector(".tempreture");
         weather.innerText = data.current.condition.text;
         temp.innerText = data.current.temp_c + "°C";
 
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date+' '+time1;
+ 
+console.log(dateTime)
+        let localTime = document.querySelector(".local-time");
+        localTime.innerText = dateTime;
+
+        let a;
+        let time;
+        setInterval(() => {
+          a = new Date();
+          time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+          document.getElementById('time').innerHTML = "Local time: " + time;
+        }, 1000);
 
      } )
 	//.catch(err => console.error(err));
