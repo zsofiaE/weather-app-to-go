@@ -77,6 +77,8 @@ const weather = document.querySelector(".weather");
 const temp = document.querySelector(".tempreture");
 const localTime2 = document.querySelector(".local-time2");
 const city = document.querySelector(".city");
+const country = document.querySelector(".country");
+const forecast = document.querySelector(".forecast");
 
 
  fetch(weatherUrl)
@@ -84,16 +86,27 @@ const city = document.querySelector(".city");
 	.then(data => {
         console.log(data)
         city.innerHTML = data.location.name;
+        country.innerHTML = data.location.country;
         icon.src = data.current.condition.icon;
         weather.innerText = data.current.condition.text;
         temp.innerText = data.current.temp_c + "°C";
         localTime2.innerText = data.location.localtime;
+        let humidity = document.createElement('p');
+        humidity.innerText = "Humidity: " + data.current.humidity +" %";
+        document.querySelector(".forecast").appendChild(humidity);
+        let uv = document.createElement('p');
+        uv.innerText = "UV Index: " + data.current.uv;
+        document.querySelector(".forecast").appendChild(uv);
 
-// function for adding a time+Date
-//         var today = new Date();
-//         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-//         var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-//         var dateTime = date+' '+time1;
+
+
+
+//function for adding a time+Date
+
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date+' '+time1;
  
 // console.log(dateTime)
 //         let localTime = document.querySelector(".local-time");
@@ -108,18 +121,26 @@ const city = document.querySelector(".city");
           document.getElementById('time').innerHTML = "Local time: " + time;
         }, 1000);
 
+        const astronomyUrl = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${searchInput}&dt=${today}`; //here you need a date of today
+        
+        fetch(astronomyUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            let sunRise = document.createElement('p');
+            sunRise.innerText = "Sunrise: " + data.astronomy.astro.sunrise;
+            document.querySelector(".extra-data").appendChild(sunRise);
+        })
+  
+     })
 
+     const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${searchInput}`;
+     fetch(timeZoneUrl)
+     .then(response => response.json())
+     .then(datatz => {
+         //console.log(datatz)
 
-       const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${searchInput}`;
-       fetch(timeZoneUrl)
-       .then(response => response.json())
-       .then(datatz => {
-           console.log(datatz)
-
-       })
-
-
-     } )
+     })
 	//.catch(err => console.error(err));
 
 }
