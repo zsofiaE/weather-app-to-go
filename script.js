@@ -71,7 +71,8 @@ function searchPhotos(){
 
 
 const apiKey = "37cf947bdeb74b2c9b5184815230102";
-const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchInput}`;
+const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchInput}&aqi=yes`;
+// at the end of the uRL "&aqi=yes" -  fetches also the air quality data
 const icon = document.querySelector(".icon");
 const weather = document.querySelector(".weather");
 const temp = document.querySelector(".tempreture");
@@ -107,6 +108,7 @@ console.log(dateTime)
        .then(response => response.json())
        .then(datatz => {
            console.log(datatz)
+           //the same data also fetched from the normal "url"
 
        })
 
