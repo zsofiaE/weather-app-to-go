@@ -18,10 +18,11 @@
 
 .weather-card{
     margin: 10px;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     background: linear-gradient(180deg, rgba(116, 50, 186, 0.6) 0%, rgba(25, 205, 157, 0.6) 100%);
     text-align: center;
+    min-width: 250px;
 }
 .hide{
     display: none;
@@ -43,4 +44,16 @@
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#search-input{
+    padding: 3px 5px;
+    border-radius: 3px;
+    border: none;
+}
+
+.button{
+    padding: 3px 15px;
+    border-radius: 3px;
+    border: none;
 }
