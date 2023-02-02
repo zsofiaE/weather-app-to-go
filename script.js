@@ -71,7 +71,8 @@ function searchPhotos(){
 
 
 const apiKey = "37cf947bdeb74b2c9b5184815230102";
-const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchInput}`;
+const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchInput}&aqi=yes`;
+// at the end of the uRL "&aqi=yes" -  fetches also the air quality data
 const icon = document.querySelector(".icon");
 const weather = document.querySelector(".weather");
 const temp = document.querySelector(".tempreture");
@@ -85,6 +86,31 @@ const temp = document.querySelector(".tempreture");
         weather.innerText = data.current.condition.text;
         temp.innerText = data.current.temp_c + "°C";
 
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date+' '+time1;
+ 
+console.log(dateTime)
+        let localTime = document.querySelector(".local-time");
+        localTime.innerText = dateTime;
+
+        let a;
+        let time;
+        setInterval(() => {
+          a = new Date();
+          time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+          document.getElementById('time').innerHTML = "Local time: " + time;
+        }, 1000);
+
+        const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${searchInput}`;
+       fetch(timeZoneUrl)
+       .then(response => response.json())
+       .then(datatz => {
+           console.log(datatz)
+           //the same data also fetched from the normal "url"
+
+       })
 
      } )
 	//.catch(err => console.error(err));
