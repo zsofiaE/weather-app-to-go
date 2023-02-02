@@ -102,6 +102,14 @@ console.log(dateTime)
           document.getElementById('time').innerHTML = "Local time: " + time;
         }, 1000);
 
+        const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${searchInput}`;
+       fetch(timeZoneUrl)
+       .then(response => response.json())
+       .then(datatz => {
+           console.log(datatz)
+
+       })
+
      } )
 	//.catch(err => console.error(err));
 
