@@ -21,7 +21,7 @@ function searchPhotos(){
         //console.log(data)
     return data.json();
     })  .then (function (data) {
-        console.log(data) //array/results
+        //console.log(data) //array/results
        
     //     return data
     // })
@@ -43,8 +43,6 @@ function searchPhotos(){
    // city.innerHTML = searchInput; //we add City rathe rfrom API
     
     
-    
-
    //data.results.forEach ( photo => {
 
     //     let bgImage = "";
@@ -76,7 +74,7 @@ const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${
 const icon = document.querySelector(".icon");
 const weather = document.querySelector(".weather");
 const temp = document.querySelector(".tempreture");
-const localTime2 = document.querySelector(".local-time2");
+const timeDate = document.querySelector(".time-date");
 const city = document.querySelector(".city");
 const country = document.querySelector(".country");
 const forecast = document.querySelector(".forecast");
@@ -91,32 +89,19 @@ const forecast = document.querySelector(".forecast");
         icon.src = data.current.condition.icon;
         weather.innerText = data.current.condition.text;
         temp.innerText = data.current.temp_c + "°C";
-        localTime2.innerText = data.location.localtime;
-        let humidity = document.createElement('p');
+        timeDate.innerText = data.location.localtime;
+
+       // const humidity = document.createElement('p');
+        const humidity = document.querySelector(".humidity");
         humidity.innerText = "Humidity: " + data.current.humidity +" %";
-        document.querySelector(".forecast").appendChild(humidity);
-        let uv = document.createElement('p');
+       // document.querySelector(".forecast").appendChild(humidity);
+        // const uv = document.createElement('p');
+        const uv = document.querySelector(".uv");
         uv.innerText = "UV Index: " + data.current.uv;
-        document.querySelector(".forecast").appendChild(uv);
+       // document.querySelector(".forecast").appendChild(uv);
 
-        var today = new Date();
-        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date+' '+time1;
  
-console.log(dateTime)
-        let localTime = document.querySelector(".local-time");
-        localTime.innerText = dateTime;
-
-        let a;
-        let time;
-        setInterval(() => {
-          a = new Date();
-          time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
-          document.getElementById('time').innerHTML = "Local time: " + time;
-        }, 1000);
-
-        const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${searchInput}`;
+    const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${searchInput}`;
        fetch(timeZoneUrl)
        .then(response => response.json())
        .then(datatz => {
@@ -126,13 +111,12 @@ console.log(dateTime)
        })
 
 
-
 //function for adding a time+Date
 
         var today = new Date();
-        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date+' '+time1;
+        // var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        // var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        // var dateTime = date+' '+time1;
  
 // console.log(dateTime)
 //         let localTime = document.querySelector(".local-time");
@@ -147,26 +131,22 @@ console.log(dateTime)
           document.getElementById('time').innerHTML = "Local time: " + time;
         }, 1000);
 
-        const astronomyUrl = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${searchInput}&dt=${today}`; //here you need a date of today
+    const astronomyUrl = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${searchInput}&dt=${today}`; //here you need a date of today
         
         fetch(astronomyUrl)
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            let sunRise = document.createElement('p');
-            sunRise.innerText = "Sunrise: " + data.astronomy.astro.sunrise;
-            document.querySelector(".extra-data").appendChild(sunRise);
+           // const sunRise = document.createElement('p');
+            const sunrise = document.querySelector(".sunrise");
+            sunrise.innerText = "Sunrise: " + data.astronomy.astro.sunrise;
+            const sunset = document.querySelector(".sunset");
+            sundown.innerText = "Sunrise: " + data.astronomy.astro.sunset;
+          //  document.querySelector(".extra-data").appendChild(sunRise);
         })
   
      })
 
-     const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${searchInput}`;
-     fetch(timeZoneUrl)
-     .then(response => response.json())
-     .then(datatz => {
-         //console.log(datatz)
-
-     })
 	//.catch(err => console.error(err));
 
 }
