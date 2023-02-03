@@ -89,7 +89,7 @@ const forecast = document.querySelector(".forecast");
         icon.src = data.current.condition.icon;
         weather.innerText = data.current.condition.text;
         temp.innerText = data.current.temp_c + "°C";
-        timeDate.innerText = data.location.localtime;
+        timeDate.innerText = "Date: " + data.location.localtime;
 
        // const humidity = document.createElement('p');
         const humidity = document.querySelector(".humidity");
@@ -139,9 +139,9 @@ const forecast = document.querySelector(".forecast");
             console.log(data)
            // const sunRise = document.createElement('p');
             const sunrise = document.querySelector(".sunrise");
-            sunrise.innerText = "Sunrise: " + data.astronomy.astro.sunrise;
+            sunrise.innerText = data.astronomy.astro.sunrise;
             const sunset = document.querySelector(".sunset");
-            sunset.innerText = "Sunrise: " + data.astronomy.astro.sunset;
+            sunset.innerText = data.astronomy.astro.sunset;
           //  document.querySelector(".extra-data").appendChild(sunRise);
         })
   
