@@ -21,7 +21,7 @@ function searchPhotos(){
         //console.log(data)
     return data.json();
     })  .then (function (data) {
-        //console.log(data) //array/results
+        console.log(data) //array/results
        
     //     return data
     // })

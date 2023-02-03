@@ -45,7 +45,7 @@ p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, rgba(116, 50, 186, 0.5) 0%, rgba(25, 205, 157, 0.5) 100%);
+    /* background: linear-gradient(180deg, rgba(116, 50, 186, 0.5) 0%, rgba(25, 205, 157, 0.5) 100%); */
     background-size: cover;
 }
 
@@ -54,6 +54,19 @@ p{
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.bg-gradient{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(116, 50, 186, 0.6) 0%, rgba(25, 205, 157, 0.6) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #search-input{
