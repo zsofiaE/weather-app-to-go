@@ -1,6 +1,6 @@
 //const clientId = "befOWXko_VO5MAUZByFqicKzazdX8IHU6gsSb6BXadc"; // Nr. 1
-const clientId = "8FAQOMjMmHK-HJmM7eLkhcRwyWZVg_TZ5ybi20qw9Dw"; // Nr. 2
-//const clientId = "f-pm4kGZgNh2VI_tYGJHAV2pEUazn_deA1KiMjMQUYg"; // Nr. 3
+//const clientId = "8FAQOMjMmHK-HJmM7eLkhcRwyWZVg_TZ5ybi20qw9Dw"; // Nr. 2
+const clientId = "f-pm4kGZgNh2VI_tYGJHAV2pEUazn_deA1KiMjMQUYg"; // Nr. 3
 // const clientId = "h_3sisufaSWfhCD0Zsog_yjhnKj-yr1RTyjhuKr3VFY"; // Nr. 4 
 // const clientId = "nhHInUCkFEGWWmSpsJt3pJLTYevYEE1oy4pvyWatKiM"; // Nr. 5
 
@@ -141,7 +141,7 @@ const forecast = document.querySelector(".forecast");
             const sunrise = document.querySelector(".sunrise");
             sunrise.innerText = "Sunrise: " + data.astronomy.astro.sunrise;
             const sunset = document.querySelector(".sunset");
-            sundown.innerText = "Sunrise: " + data.astronomy.astro.sunset;
+            sunset.innerText = "Sunrise: " + data.astronomy.astro.sunset;
           //  document.querySelector(".extra-data").appendChild(sunRise);
         })
   

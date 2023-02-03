@@ -57,3 +57,17 @@
     border-radius: 3px;
     border: none;
 }
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.extra-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
