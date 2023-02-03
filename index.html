@@ -11,8 +11,7 @@
         <!-- googlefonts link   -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
         <!--favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -36,19 +35,20 @@
 
                     </div>
                     <div class="container">
-                    <div class="extra-data">
-                        <p class="humidity"></p>
-                        <p class="uv"></p>
+                        <div class="extra-data">
+                            <p class="humidity"></p>
+                            <p class="uv"></p>
+                        </div>
+                        <div class="extra-data astro">
+                            <div class="box"><img src="/assets/sunrise-50.png" width="24" height="24"><p class="sunrise"></p></div> 
+                            <div class="box"><img src="/assets/sunset-50.png" width="24" height="24"><p class="sunset"></p></div> 
+                        </div>
                     </div>
-                    <div class="extra-data astro">
-                        <p class="sunrise"></p>
-                        <p class="sunset"></p>
+                    <div class="time-date-box">
+                        <p class="time-date"></p>
+
+                        <span id="time"></span>
                     </div>
-                </div>
-
-                    <p class="time-date"></p>
-
-                    <span id="time"></span>
                 </div>
                 <div class="search-container">
                     <input type="search" id="search-input" placeholder="search for a city" 
