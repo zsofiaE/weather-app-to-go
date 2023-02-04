@@ -8,56 +8,28 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://kit.fontawesome.com/18795bf9d8.js" crossorigin="anonymous"></script>
     
-        <!-- googlefonts link   -->
+        <!-- googlefonts link   
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-        <!--favicon -->
+        favicon 
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-        <link rel="manifest" href="assets/site.webmanifest">
+        <link rel="manifest" href="assets/site.webmanifest">-->
 
     <title>weather app to go</title>
-
     </head>
+
     <body>
         <div class="search-section bg">
-            <!-- <div id="bg-result">  -->
+            <div class="timeAndSearchBox">
+                <input type="search" id="search-input" placeholder="search for a city" autocomplete="off" inputmode="search">
+                <span id="time"></span>
+            </div>
 
-                <div class="weather-card hide">
-                    <h1 class="city"></h1>
-                    <h2 class="country"></h2>
-                    <div class="forecast">
-                        <image class="icon" src="">
-                        <p class="weather"></p>
-                        <p class="tempreture"></p>  
-
-                    </div>
-                    <div class="container">
-                        <div class="extra-data">
-                            <p class="humidity"></p>
-                            <p class="uv"></p>
-                        </div>
-                        <div class="extra-data astro">
-                            <div class="box"><img src="/assets/sunrise-50.png" width="24" height="24"><p class="sunrise"></p></div> 
-                            <div class="box"><img src="/assets/sunset-50.png" width="24" height="24"><p class="sunset"></p></div> 
-                        </div>
-                    </div>
-                    <div class="time-date-box">
-                        <p class="time-date"></p>
-
-                        <span id="time"></span>
-                    </div>
-                </div>
-                <div class="search-container">
-                    <input type="search" id="search-input" placeholder="search for a city" 
-                    autocomplete="off" inputmode="search">
-                    <button class="search-btn button" type="submit" onclick="searchPhotos()">search</button>
-                </div>
-
-                <div class="gallery"> </div>
-            <!-- </div> -->
+            <div class="gridContainer"> 
+            </div>     
         </div>
         <script src="script.js"></script>
     </body>

@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+   /* box-sizing: border-box;*/
     font-family: 'Roboto', sans-serif;
 }
 
@@ -14,25 +14,28 @@ p{
     font-size: 16px;
 }
 
-.body{
-    width: 100%;
-    height: 100vh;
-    background: rgb(34,193,195);
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    line-height: 2pt;
+body{
+    background: linear-gradient(180deg, rgba(116, 50, 186, 0.5) 0%, rgba(25, 205, 157, 0.5));
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.weather-card{
-    margin: 10px;
-    padding: 20px;
+.gridContainer {
+    display: grid;
+    grid-gap: 10px;
+    margin-top: 40px;
+    padding: 40px;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  }
+  
+.weather-card{  
+    border: solid 3px yellow;
+    margin: 5px;
+    padding: 10px;
     border-radius: 10px;
-    background: linear-gradient(180deg, rgba(116, 50, 186, 0.6) 0%, rgba(25, 205, 157, 0.6) 100%);
+    background: linear-gradient(180deg, rgba(116, 50, 186, 0.6) 0%, rgba(25, 205, 157, 0.6)100%);
     text-align: center;
-    min-width: 300px;
+    min-width: 250px;
 }
 .hide{
     display: none;
@@ -40,26 +43,36 @@ p{
 }
 
 .search-section{
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, rgba(116, 50, 186, 0.5) 0%, rgba(25, 205, 157, 0.5) 100%);
-    background-size: cover;
 }
 
-.bg{
-    width: 100vw;
-    height: 100vh;
+.bg {  
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
 
 #search-input{
+    text-align: center;
+    margin-top: 60px;
     padding: 3px 5px;
     border-radius: 3px;
     border: none;
+}
+
+.timeAndSearchBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#time {
+    margin-top: 10px;
 }
 
 .button{
@@ -73,11 +86,9 @@ p{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .extra-data{
-    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -85,7 +96,6 @@ p{
     border-bottom: 0.5px solid rgba(65, 64, 64, 0.8);
 }
 
-.time-date-box{
-    padding-top: 10px;
-
+.box {
+    padding: 10px;
 }
