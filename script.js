@@ -41,7 +41,7 @@ function createCard(Wettervorhersage)
     <h1 class="city${Wettervorhersage.cardNumber}"></h1>
     <h2 class="country${Wettervorhersage.cardNumber}"></h2>
     <div class="forecast${Wettervorhersage.cardNumber}">
-        <image class="icon src="">
+        <image class="icon${Wettervorhersage.cardNumber}" src="/assets/apple-touch-icon.png">
         <p class="weather${Wettervorhersage.cardNumber}"></p>
         <p class="tempreture${Wettervorhersage.cardNumber}"></p>  
     </div>
@@ -85,11 +85,11 @@ offersGrid.appendChild(card);
 
 /* -------------------Look for a random background Picture (Sofia's favourite) ------------------- */
 
-//const clientId = "befOWXko_VO5MAUZByFqicKzazdX8IHU6gsSb6BXadc"; // Nr. 1
+const clientId = "befOWXko_VO5MAUZByFqicKzazdX8IHU6gsSb6BXadc"; // Nr. 1
 //const clientId = "8FAQOMjMmHK-HJmM7eLkhcRwyWZVg_TZ5ybi20qw9Dw"; // Nr. 2
 //const clientId = "f-pm4kGZgNh2VI_tYGJHAV2pEUazn_deA1KiMjMQUYg"; // Nr. 3
- const clientId = "h_3sisufaSWfhCD0Zsog_yjhnKj-yr1RTyjhuKr3VFY"; // Nr. 4 
-// const clientId = "nhHInUCkFEGWWmSpsJt3pJLTYevYEE1oy4pvyWatKiM"; // Nr. 5
+// const clientId = "h_3sisufaSWfhCD0Zsog_yjhnKj-yr1RTyjhuKr3VFY"; // Nr. 4 
+ //const clientId = "nhHInUCkFEGWWmSpsJt3pJLTYevYEE1oy4pvyWatKiM"; // Nr. 5
 
 let result;
 function searchPhotos(theCityName)
@@ -119,13 +119,12 @@ function apiCall (cityName, dayNumber)
 {
   const apiKey = "37cf947bdeb74b2c9b5184815230102";
   const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=yes`;  // at the end of the uRL "&aqi=yes" -  fetches also the air quality data
-  const icon = document.querySelector(`.icon`);
+  const icon = document.querySelector(`.icon${dayNumber}`);
   const weather = document.querySelector(`.weather${dayNumber}`);
   const temp = document.querySelector(`.tempreture${dayNumber}`);
   const timeDate = document.querySelector(`.time-date${dayNumber}`);
   const city = document.querySelector(`.city${dayNumber}`);
   const country = document.querySelector(`.country${dayNumber}`);
-  const forecast = document.querySelector(`.forecast${dayNumber}`); // not yet used
   
  // fechting data for the chosen Destination
  fetch(weatherUrl)
@@ -139,10 +138,11 @@ function apiCall (cityName, dayNumber)
       weather.innerText = data.current.condition.text;
       temp.innerText = data.current.temp_c + "°C";
       timeDate.innerText = `Local DT in ${cityName}: ${data.location.localtime}`;
+      
 
       // humidity 
       const humidity = document.querySelector(`.humidity${dayNumber}`);
-      humidity.innerText = "Humidity: " + data.current.humidity +" %";
+      humidity.innerText = "Humidity: " + data.current.humidity +"% ";
       
       // UV 
       const uv = document.querySelector(`.uv${dayNumber}`);
@@ -171,9 +171,55 @@ function apiCall (cityName, dayNumber)
           sunset.innerText = data.astronomy.astro.sunset;
         }
       )
+      
+        fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=3&dt=${today}`)
+        .then(response => response.json())
+        .then(data => 
+        {
+          console.log(data.forecast.forecastday[1]);
+          // show forecast for the second day
+          const timeDate2 = document.querySelector(`.time-date2`);
+          const temp2 = document.querySelector(`.tempreture2`);
+          const icon2 = document.querySelector(`.icon2`);
+          const weather2 = document.querySelector(`.weather2`);
+          const sunrise2 = document.querySelector(`.sunrise2`);
+          const sunset2 = document.querySelector(`.sunset2`);
+          const humidity2 = document.querySelector(`.humidity2`);
+          const uv2 = document.querySelector(`.uv2`);
+
+          timeDate2.innerText = data.forecast.forecastday[1].date;
+          temp2.innerText = data.forecast.forecastday[1].day.avgtemp_c;
+          icon2.innerText = data.forecast.forecastday[1].day.condition.icon;
+          weather2.innerText = data.forecast.forecastday[1].day.condition.text;
+          sunrise2.innerText = data.forecast.forecastday[1].astro.sunrise;
+          sunset2.innerText = data.forecast.forecastday[1].astro.sunset;
+          humidity2.innerText = "Humidity: " + data.forecast.forecastday[1].day.avghumidity + "% ";
+          uv2.innerText = "UV Index: " + data.forecast.forecastday[1].day.uv;
+
+          // show forecast for the third day
+          const timeDate3 = document.querySelector(`.time-date3`);
+          const temp3 = document.querySelector(`.tempreture3`);
+          const icon3 = document.querySelector(`.icon3`);
+          const weather3 = document.querySelector(`.weather3`);
+          const sunrise3 = document.querySelector(`.sunrise3`);
+          const sunset3 = document.querySelector(`.sunset3`);
+          const humidity3 = document.querySelector(`.humidity3`);
+          const uv3 = document.querySelector(`.uv3`);
+
+          timeDate3.innerText = data.forecast.forecastday[2].date;
+          temp3.innerText = data.forecast.forecastday[2].day.avgtemp_c;
+          icon3.innerText = data.forecast.forecastday[2].day.condition.icon;
+          weather3.innerText = data.forecast.forecastday[2].day.condition.text;
+          sunrise3.innerText = data.forecast.forecastday[2].astro.sunrise;
+          sunset3.innerText = data.forecast.forecastday[2].astro.sunset;
+          humidity3.innerText = "Humidity: " + data.forecast.forecastday[2].day.avghumidity + "% ";
+          uv3.innerText = "UV Index: " + data.forecast.forecastday[2].day.uv;   
+        }
+      )
     }
   )
 }
+
 
 
 /*--------------------call the API function--------------------*/
@@ -182,16 +228,4 @@ document.querySelector('#search-input').addEventListener('change', function() {
   var city = document.getElementById('search-input').value;
   apiCall(city, 1);
   searchPhotos(city);
-});
-
-// if the city name was entered and enter pressed, call the JSON database
-document.querySelector('#search-input').addEventListener('change', function() {
-  var city = document.getElementById('search-input').value;
-  apiCall(city, 2);
-});
-
-// if the city name was entered and enter pressed, call the JSON database
-document.querySelector('#search-input').addEventListener('change', function() {
-  var city = document.getElementById('search-input').value;
-  apiCall(city, 3);
 });
