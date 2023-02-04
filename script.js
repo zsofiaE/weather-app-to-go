@@ -6,8 +6,14 @@ const clientId = "f-pm4kGZgNh2VI_tYGJHAV2pEUazn_deA1KiMjMQUYg"; // Nr. 3
 
 let result;
 
+const headTitle = document.querySelector(".favicon");
+let setFavicon = document.querySelector("#fav-image");
 
+function setFavicons(favImg){
 
+    setFavicon.setAttribute('href', favImg);
+    // headTitle.appendChild(setFavicon);
+}
 
 
 function searchPhotos(){
@@ -84,12 +90,30 @@ const forecast = document.querySelector(".forecast");
 	.then(response => response.json())
 	.then(data => {
         console.log(data)
+
         city.innerHTML = data.location.name;
         country.innerHTML = data.location.country;
         icon.src = data.current.condition.icon;
         weather.innerText = data.current.condition.text;
         temp.innerText = data.current.temp_c + "°C";
         timeDate.innerText = "Date: " + data.location.localtime;
+
+        let x = weather.innerText;
+        //console.log(x);
+
+        switch (x) {
+            case "Sunny":
+              setFavicons ('./assets/113.png');
+              break;
+            case "Partly cloudy":
+                setFavicons ('./assets/116.png');
+              break;
+              case "Light rain":
+                setFavicons ('./assets/296.png');
+              break;
+            default:
+                setFavicons('./assets/119.png');
+          }
 
        // const humidity = document.createElement('p');
         const humidity = document.querySelector(".humidity");
