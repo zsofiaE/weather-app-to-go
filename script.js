@@ -37,7 +37,7 @@ const offersGrid = document.querySelector('.gridContainer')
 function createCard(Wettervorhersage) 
 {
   let content = `
-  <div class="weather-card${Wettervorhersage.cardNumber}" hide>
+  <div class="weather-card${Wettervorhersage.cardNumber}">
     <h1 class="city${Wettervorhersage.cardNumber}"></h1>
     <h2 class="country${Wettervorhersage.cardNumber}"></h2>
     <div class="forecast${Wettervorhersage.cardNumber}">
@@ -85,11 +85,11 @@ offersGrid.appendChild(card);
 
 /* -------------------Look for a random background Picture (Sofia's favourite) ------------------- */
 
-const clientId = "befOWXko_VO5MAUZByFqicKzazdX8IHU6gsSb6BXadc"; // Nr. 1
+//const clientId = "befOWXko_VO5MAUZByFqicKzazdX8IHU6gsSb6BXadc"; // Nr. 1
 //const clientId = "8FAQOMjMmHK-HJmM7eLkhcRwyWZVg_TZ5ybi20qw9Dw"; // Nr. 2
 //const clientId = "f-pm4kGZgNh2VI_tYGJHAV2pEUazn_deA1KiMjMQUYg"; // Nr. 3
 // const clientId = "h_3sisufaSWfhCD0Zsog_yjhnKj-yr1RTyjhuKr3VFY"; // Nr. 4 
- //const clientId = "nhHInUCkFEGWWmSpsJt3pJLTYevYEE1oy4pvyWatKiM"; // Nr. 5
+ const clientId = "nhHInUCkFEGWWmSpsJt3pJLTYevYEE1oy4pvyWatKiM"; // Nr. 5
 
 let result;
 function searchPhotos(theCityName)
@@ -108,8 +108,6 @@ function searchPhotos(theCityName)
       const bg = document.querySelector(".bg");
       const img = data.results[Math.floor(Math.random() * 2)].urls.regular;
       bg.style.backgroundImage = `url(${img})`;
-      const weatherCard = document.querySelector(".weather-card");
-      weatherCard.classList.remove('hide'); //----------------------------------------------------------I think thiw wil not work with the dynamic cards. we'll need to google it out
     }
   )
 }
@@ -177,6 +175,8 @@ function apiCall (cityName, dayNumber)
         .then(data => 
         {
           console.log(data.forecast.forecastday[1]);
+          console.log(data.forecast.forecastday[2]);
+
           // show forecast for the second day
           const timeDate2 = document.querySelector(`.time-date2`);
           const temp2 = document.querySelector(`.tempreture2`);
@@ -220,12 +220,15 @@ function apiCall (cityName, dayNumber)
   )
 }
 
-
-
 /*--------------------call the API function--------------------*/
 // if the city name was entered and enter pressed, call the JSON database
 document.querySelector('#search-input').addEventListener('change', function() {
   var city = document.getElementById('search-input').value;
   apiCall(city, 1);
   searchPhotos(city);
+  
+  const weatherCard = document.querySelector(".gridContainer");
+  weatherCard.classList.remove('hide'); 
 });
+
+
