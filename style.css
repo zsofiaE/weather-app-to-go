@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-   /* box-sizing: border-box;*/
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -16,8 +16,8 @@ p{
 
 body{
     background: linear-gradient(180deg, rgba(116, 50, 186, 0.5) 0%, rgba(25, 205, 157, 0.5));
-    background-repeat: no-repeat;
-    background-size: cover;
+/*    background-repeat: no-repeat;
+    background-size: cover;*/
 }
 
 .gridContainer {
@@ -43,8 +43,10 @@ body{
     min-width: 250px;
 }
 
-
 .search-section{
+    border: solid 3px greenyellow;
+    min-width: inherit;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
