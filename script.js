@@ -96,7 +96,7 @@ offersGrid.appendChild(card);
 let result;
 function searchPhotos(theCityName)
 {
-  const url = `https://api.unsplash.com/search/photos/?client_id=${clientId}&query=${theCityName}&per_page=5//`;
+  const url = `https://api.unsplash.com/search/photos/?client_id=${clientId}&query=${theCityName}&per_page=1//`;
   fetch(url)
   .then (function (data) 
     {
@@ -138,7 +138,37 @@ function apiCall (cityName, dayNumber)
       weather.innerText = data.current.condition.text;
       temp.innerText = data.current.temp_c + "°C";
       timeDate.innerText = `DT in ${data.location.name}: ${data.location.localtime}`;
-      
+    
+      /*---------fetching data and for dynamic favicon --------*/
+    //   let x = weather.innerText;
+    // //  console.log(x);
+
+    //  let setFavicons = "";
+
+    //   switch (x) {
+    //       case "Sunny":
+    //         setFavicons = ('/assets/113.png');
+    //         break;
+    //       case "Partly cloudy":
+    //           setFavicons = ('/assets/116.png');
+    //         break;
+    //         case "Mist":
+    //           setFavicons = './assets/377.png';
+    //         break;
+    //       default:
+    //           setFavicons = ('/assets/119.png');
+    //         break;
+    //   }
+
+
+      let getPathIcon = data.current.condition.icon;
+      let favicon = document.getElementById('favicon');
+      //console.log(favicon);
+
+      favicon.setAttribute('href', getPathIcon);
+      // console.log()
+
+      /*-----------Extra data fo the weather---------*/
       // humidity 
       const humidity = document.querySelector(`.humidity${dayNumber}`);
       humidity.innerText = "Humidity: " + data.current.humidity +"%";
@@ -152,7 +182,7 @@ function apiCall (cityName, dayNumber)
       .then(response => response.json())
       .then(datatz => 
         {
-          console.log(datatz)
+          //console.log(datatz)
           //the same data also fetched from the normal "url"
         }
       )
@@ -163,21 +193,20 @@ function apiCall (cityName, dayNumber)
       .then(response => response.json())
       .then(data => 
         {
-          console.log(data)
+          //console.log(data)
           const sunrise = document.querySelector(`.sunrise${dayNumber}`);
           sunrise.innerText = data.astronomy.astro.sunrise;
           const sunset = document.querySelector(`.sunset${dayNumber}`);
           sunset.innerText = data.astronomy.astro.sunset;
         }
       )
-      
  
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=3&dt=${today}`)
         .then(response => response.json())
         .then(data => 
         {
-          console.log(data.forecast.forecastday[1]);
-          console.log(data.forecast.forecastday[2]);
+          // console.log(data.forecast.forecastday[1]);
+          // console.log(data.forecast.forecastday[2]);
        
           //--> show the Label of the day 1
           const theDay1 = document.querySelector(`.labelNumber1`);
@@ -253,14 +282,4 @@ document.querySelector('#search-input').addEventListener('change', function() {
   
 });
 
-/*---------function for favicon - not running, just a static one from index.html--------------------*/
-function setFavicons(favImg){
-  let headTitle = document.querySelector('head');
-  let setFavicon = document.createElement('link');
-  // let setFavicon = document.querySelector('#favicon');
-  setFavicon.setAttribute('rel','shortcut-icon');
-  setFavicon.setAttribute('href',favImg);
-  headTitle.appendChild(setFavicon);
-}
-setFavicons('./assets/partyally_cloudy');
 
