@@ -137,7 +137,7 @@ function apiCall (cityName, dayNumber)
       icon.src = data.current.condition.icon;
       weather.innerText = data.current.condition.text;
       temp.innerText = data.current.temp_c + "°C";
-      timeDate.innerText = `DT in ${cityName}: ${data.location.localtime}`;
+      timeDate.innerText = `DT in ${data.location.name}: ${data.location.localtime}`;
       
       // humidity 
       const humidity = document.querySelector(`.humidity${dayNumber}`);
@@ -253,7 +253,7 @@ document.querySelector('#search-input').addEventListener('change', function() {
   
 });
 
-/*--------------------function for favicon - not running--------------------*/
+/*---------function for favicon - not running, just a static one from index.html--------------------*/
 function setFavicons(favImg){
   let headTitle = document.querySelector('head');
   let setFavicon = document.createElement('link');
