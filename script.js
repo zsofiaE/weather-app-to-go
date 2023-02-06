@@ -253,4 +253,14 @@ document.querySelector('#search-input').addEventListener('change', function() {
   
 });
 
+/*--------------------function for favicon - not running--------------------*/
+function setFavicons(favImg){
+  let headTitle = document.querySelector('head');
+  let setFavicon = document.createElement('link');
+  // let setFavicon = document.querySelector('#favicon');
+  setFavicon.setAttribute('rel','shortcut-icon');
+  setFavicon.setAttribute('href',favImg);
+  headTitle.appendChild(setFavicon);
+}
+setFavicons('./assets/partyally_cloudy');
 
