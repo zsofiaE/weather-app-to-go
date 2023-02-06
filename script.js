@@ -96,7 +96,7 @@ offersGrid.appendChild(card);
 let result;
 function searchPhotos(theCityName)
 {
-  const url = `https://api.unsplash.com/search/photos/?client_id=${clientId}&query=${theCityName}&per_page=1//`;
+  const url = `https://api.unsplash.com/search/photos/?client_id=${clientId}&query=${theCityName}&per_page=5//`;
   fetch(url)
   .then (function (data) 
     {
@@ -108,7 +108,7 @@ function searchPhotos(theCityName)
       console.log(data.results) //array/0
 
       const bg = document.querySelector(".bg");
-      const img = data.results[Math.floor(Math.random() * 2)].urls.regular;
+      const img = data.results[Math.floor(Math.random() * data.results.length)].urls.regular;
       bg.style.backgroundImage = `url(${img})`;
     }
   )
