@@ -118,7 +118,7 @@ function searchPhotos(theCityName)
 function apiCall (cityName, dayNumber)
 {
   const apiKey = "37cf947bdeb74b2c9b5184815230102";
-  const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}`;  // at the end of the uRL "&aqi=yes" -  fetches also the air quality data
+  const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}`;  // at the end of the uRL "&aqi=yes" -  fetches also the air quality data
   const icon = document.querySelector(`.icon${dayNumber}`);
   const weather = document.querySelector(`.weather${dayNumber}`);
   const temp = document.querySelector(`.tempreture${dayNumber}`);
@@ -177,7 +177,7 @@ function apiCall (cityName, dayNumber)
       const uv = document.querySelector(`.uv${dayNumber}`);
       uv.innerText = "UV Index: " + data.current.uv;
     
-      const timeZoneUrl = `http://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${cityName}`;
+      const timeZoneUrl = `https://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${cityName}`;
       fetch(timeZoneUrl)
       .then(response => response.json())
       .then(datatz => 
@@ -188,7 +188,7 @@ function apiCall (cityName, dayNumber)
       )
 
       var today = new Date();     
-      const astronomyUrl = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${cityName}&dt=${today}`; //here you need a date of today
+      const astronomyUrl = `https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${cityName}&dt=${today}`; //here you need a date of today
       fetch(astronomyUrl)
       .then(response => response.json())
       .then(data => 
@@ -201,7 +201,7 @@ function apiCall (cityName, dayNumber)
         }
       )
  
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=3&dt=${today}`)
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=3&dt=${today}`)
         .then(response => response.json())
         .then(data => 
         {
