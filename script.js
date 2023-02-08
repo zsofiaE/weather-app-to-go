@@ -226,7 +226,7 @@ function apiCall (cityName, dayNumber)
           const uv2 = document.querySelector(`.uv2`);        
          
           timeDate2.innerText = data.forecast.forecastday[1].date;
-          temp2.innerText = data.forecast.forecastday[1].day.avgtemp_c;
+          temp2.innerText = data.forecast.forecastday[1].day.avgtemp_c + "°C";
           icon2.innerText = data.forecast.forecastday[1].day.condition.icon;
           weather2.innerText = data.forecast.forecastday[1].day.condition.text;
           sunrise2.innerText = data.forecast.forecastday[1].astro.sunrise;
@@ -251,7 +251,7 @@ function apiCall (cityName, dayNumber)
           const uv3 = document.querySelector(`.uv3`);
 
           timeDate3.innerText = data.forecast.forecastday[2].date;
-          temp3.innerText = data.forecast.forecastday[2].day.avgtemp_c;
+          temp3.innerText = data.forecast.forecastday[2].day.avgtemp_c + "°C";
           icon3.innerText = data.forecast.forecastday[2].day.condition.icon;
           weather3.innerText = data.forecast.forecastday[2].day.condition.text;
           sunrise3.innerText = data.forecast.forecastday[2].astro.sunrise;
