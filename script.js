@@ -118,7 +118,7 @@ function searchPhotos(theCityName)
 function apiCall (cityName, dayNumber)
 {
   const apiKey = "37cf947bdeb74b2c9b5184815230102";
-  const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=yes`;  // at the end of the uRL "&aqi=yes" -  fetches also the air quality data
+  const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}`;  // at the end of the uRL "&aqi=yes" -  fetches also the air quality data
   const icon = document.querySelector(`.icon${dayNumber}`);
   const weather = document.querySelector(`.weather${dayNumber}`);
   const temp = document.querySelector(`.tempreture${dayNumber}`);
