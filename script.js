@@ -227,7 +227,7 @@ function apiCall (cityName, dayNumber)
          
           timeDate2.innerText = data.forecast.forecastday[1].date;
           temp2.innerText = data.forecast.forecastday[1].day.avgtemp_c + "°C";
-          icon2.innerText = data.forecast.forecastday[1].day.condition.icon;
+          icon2.src = data.forecast.forecastday[1].day.condition.icon;
           weather2.innerText = data.forecast.forecastday[1].day.condition.text;
           sunrise2.innerText = data.forecast.forecastday[1].astro.sunrise;
           sunset2.innerText = data.forecast.forecastday[1].astro.sunset;
@@ -252,12 +252,13 @@ function apiCall (cityName, dayNumber)
 
           timeDate3.innerText = data.forecast.forecastday[2].date;
           temp3.innerText = data.forecast.forecastday[2].day.avgtemp_c + "°C";
-          icon3.innerText = data.forecast.forecastday[2].day.condition.icon;
+          icon3.src = data.forecast.forecastday[2].day.condition.icon;
           weather3.innerText = data.forecast.forecastday[2].day.condition.text;
           sunrise3.innerText = data.forecast.forecastday[2].astro.sunrise;
           sunset3.innerText = data.forecast.forecastday[2].astro.sunset;
           humidity3.innerText = "Humidity: " + data.forecast.forecastday[2].day.avghumidity + "% ";
           uv3.innerText = "UV Index: " + data.forecast.forecastday[2].day.uv;   
+
           //--> show the Label of the day 3
           const theDay3 = document.querySelector(`.labelNumber3`);
           const label3 = document.createElement("label");
