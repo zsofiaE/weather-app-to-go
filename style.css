@@ -20,11 +20,19 @@ body{
 }
 
 .gridContainer {
-    display: grid;
+    /* if we want to have our cards nexz zo each other than is better to use flex. Right?*/
+   
+    /*display: grid;
     grid-gap: 10px;
     margin-top: 20px;
     padding: 20px;
-    grid-template-columns: repeat(auto-fit,minmax(250px,3fr));
+    grid-template-columns: repeat(auto-fit,minmax(250px,3fr)); */
+    display: flex;
+    width: inherit;
+    justify-content: space-evenly;
+    align-items: stretch;
+    padding: 50px;
+    margin-top: 20px;
   }
 
 .hide{
@@ -39,7 +47,7 @@ body{
     border-radius: 10px;
     background: linear-gradient(180deg, rgba(116, 50, 186, 0.9) 0%, rgba(25, 205, 157, 0.6)100%);
     text-align: center;
-    min-width: 200px;
+    min-width: 250px;
 }
 
 .labelNumber {
@@ -104,11 +112,11 @@ body{
     margin-top: 10px;
 }
 
-.button{
+/* .button{
     padding: 3px 15px;
     border-radius: 3px;
     border: none;
-}
+} */
 
 .container{
     display: flex;
@@ -116,6 +124,7 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
 .astro {
     display: flex;
     width: 90%;
