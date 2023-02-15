@@ -68,14 +68,10 @@ function createCard(Wettervorhersage)
     </div>
   </div>
   `;
-  // create div
-  let card = document.createElement('div');
-
-  // create the class "weather-card" to access the style in css
-  card.classList.add('weather-card')
-
-  // write the content of the card and create grid 
-  card.innerHTML = content;
+  
+  let card = document.createElement('div'); // create div
+  card.classList.add('weather-card') // create the class "weather-card" to access the style in css
+  card.innerHTML = content; // write the content of the card and create grid 
   return card;
 }
 
@@ -96,7 +92,7 @@ offersGrid.appendChild(card);
 let result;
 function searchPhotos(theCityName)
 {
-  const url = `https://api.unsplash.com/search/photos/?client_id=${clientId}&query=${theCityName}&per_page=1//`;
+  const url = `https://api.unsplash.com/search/photos/?client_id=${clientId}&query=${theCityName}&per_page=1`;
   fetch(url)
   .then (function (data) 
     {
@@ -105,8 +101,8 @@ function searchPhotos(theCityName)
   )  
   .then (function (data) 
     {
-      console.log(data.results) //array/0
-
+      //console.log(data.results) //array/0
+    //that is how to put an fetched image on the background
       const bg = document.querySelector(".bg");
       const img = data.results[Math.floor(Math.random() * data.results.length)].urls.regular;
       bg.style.backgroundImage = `url(${img})`;
@@ -139,28 +135,7 @@ function apiCall (cityName, dayNumber)
       temp.innerText = data.current.temp_c + "°C";
       timeDate.innerText = `DT in ${data.location.name}: ${data.location.localtime}`;
     
-      /*---------fetching data and for dynamic favicon --------*/
-    //   let x = weather.innerText;
-    // //  console.log(x);
-
-    //  let setFavicons = "";
-
-    //   switch (x) {
-    //       case "Sunny":
-    //         setFavicons = ('/assets/113.png');
-    //         break;
-    //       case "Partly cloudy":
-    //           setFavicons = ('/assets/116.png');
-    //         break;
-    //         case "Mist":
-    //           setFavicons = './assets/377.png';
-    //         break;
-    //       default:
-    //           setFavicons = ('/assets/119.png');
-    //         break;
-    //   }
-
-
+      /*---------Creating a dynamic favicon based on todays weather icon path --------*/
       let getPathIcon = data.current.condition.icon;
       let favicon = document.getElementById('favicon');
       //console.log(favicon);
@@ -177,16 +152,17 @@ function apiCall (cityName, dayNumber)
       const uv = document.querySelector(`.uv${dayNumber}`);
       uv.innerText = "UV Index: " + data.current.uv;
     
-      const timeZoneUrl = `https://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${cityName}`;
-      fetch(timeZoneUrl)
-      .then(response => response.json())
-      .then(datatz => 
-        {
-          //console.log(datatz)
-          //the same data also fetched from the normal "url"
-        }
-      )
+      // const timeZoneUrl = `https://api.weatherapi.com/v1/timezone.json?key=${apiKey}&q=${cityName}`;
+      // fetch(timeZoneUrl)
+      // .then(response => response.json())
+      // .then(datatz => 
+      //   {
+      //    console.log(datatz)
+      //   //the same data also fetched from the normal "url" than we do not need it, right?
+      //   }
+      // ) 
 
+      // Sunrise, Sunset
       var today = new Date();     
       const astronomyUrl = `https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${cityName}&dt=${today}`; //here you need a date of today
       fetch(astronomyUrl)
@@ -282,5 +258,3 @@ document.querySelector('#search-input').addEventListener('change', function() {
   searchPhotos(city);
   
 });
-
-
